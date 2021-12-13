@@ -13,7 +13,7 @@ class FriendsController < ApplicationController
 
   # GET /friends/new
   def new
-    @friend = Friend.new
+    @friend = current_user.friends.new
   end
 
   # GET /friends/1/edit
@@ -60,7 +60,8 @@ class FriendsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
-      @friend = current_user.friends.find(params[:id])
+      @friend = current_user.friends.find_by(id: params[:id])
+      redirect_to friends_path, notice: 'Friend Not Found' if @friend.nil?
     end
 
     # Only allow a list of trusted parameters through.
