@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '~> 2.7'
 
+# Required for deploying on Heroku
+gem 'rake', '~> 13.0', '>= 13.0.6'
+
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
